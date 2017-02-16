@@ -1,0 +1,88 @@
+<% defaults = Redmine::Plugin::registered_plugins[:custom_menu].settings[:default] || {} %>
+<% settings = Setting.plugin_custom_menu || {} %>
+<% @settings = settings.reverse_merge(defaults).with_indifferent_access %>
+<% std_links = [[l(:button_create),'icon-add'],
+                [l(:button_edit),'icon-edit'],
+                [l(:button_log_time),'icon-time-add'],
+                [l(:button_watch),'icon-fav-off'],
+                [l(:button_unwatch),'icon-fav-on'],
+                [l(:button_copy),'icon-copy'],
+                [l(:button_delete),'icon-del'],
+                [l(:label_add_indicator),'add_indicator'],
+                [l(:label_add_pattern),'add_pattern'],
+                [l(:label_add_period),'add_period'],
+                # [l(:label_date_links),'rmplus_date_links'],
+                [l(:label_common_plan),'cp-icon-global-plan'],
+                [l(:label_show_stats),'cp-icon-stats'],
+                [l(:label_send_to_approve),'cp-icon-send-to-approve'],
+                [l(:label_show_by_ver),'cp-icon-ver'],
+                [l(:label_show_by_user),'cp-icon-user'] ] %>
+
+
+<table class="plugin_settings">
+  <tr>
+    <td></td>
+    <td>
+      <label for="settings_use_custom_menu">
+        <%= check_box_tag 'settings[use_custom_menu]', true, @settings[:use_custom_menu] %>
+        &mdash;
+        <%= l(:settings_use_custom_menu) %>
+      </label>
+    </td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>
+      <label>
+        <%= check_box_tag 'settings[use_cache]', true, @settings[:use_cache] %>
+        &mdash;
+        <%= l(:settings_cm_use_cache) %>
+      </label>
+    </td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>
+      <label>
+        <%= check_box_tag 'settings[dropdown_menu_links]', true, @settings[:dropdown_menu_links] %>
+        &mdash;
+        <%= l(:settings_cm_dropdown_menu_links) %>
+      </label>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <label for="settings_users_at_error"><%= l(:settings_items_move_to_dropdown) %></label>
+    </td>
+    <td>
+      <%= select_tag('settings[items_move_to_dropdown]', options_for_select(std_links, @settings[:items_move_to_dropdown]), { style: 'width:220px;', class: 'select2', multiple: true } ) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>
+      <label>
+        <%= check_box_tag 'settings[hide_bottom_issue_links]', true, @settings[:hide_bottom_issue_links] %>
+        &mdash;
+        <%= l(:settings_cm_hide_bottom_issue_links) %>
+      </label>
+    </td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td id="settings_save_button">
+      <div id="rmplus-logo" style="text-align: left; margin-top: 10px;">
+        <%= image_tag 'logo.png', plugin: :custom_menu, alt: l(:label_rmplus_logo), title: l(:label_rmplus_logo), width: 50, style: 'vertical-align: bottom;' %>
+        <span style="font-size: 10pt; margin-left: 5px;">
+          <%= l(:label_rmplus_logo) %>&nbsp<a href="http://rmplus.pro">http://rmplus.pro</a>.
+        </span>
+      </div>
+    </td>
+  </tr>
+</table>
+

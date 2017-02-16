@@ -1,0 +1,7 @@
+<% rmp_mailer_header(link_to(@news.title, @news_url, style: 'color:#0298CD')) %>
+
+<div style="padding: 0 20px 20px 20px; color: #000; font-size: 14px;">
+  <p><%= l(:text_user_wrote, value: h(@comment.author)) %></p>
+
+  <%= textilizable(@comment, :comments, only_path: false).gsub('<a ', '<a style="color:#0298CD"').html_safe %>
+</div>

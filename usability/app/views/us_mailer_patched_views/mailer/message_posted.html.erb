@@ -1,0 +1,7 @@
+<% rmp_mailer_header("#{@message.board.project.name} &mdash; #{@message.board.name}: #{link_to(@message.subject, @message_url, style: 'color:#0298CD')}".html_safe) %>
+
+<div style="padding: 0 20px 20px 20px; color: #000; font-size: 14px;">
+  <p><%= @message.author %></p>
+
+  <%= textilizable(@message, :content, only_path: false).gsub('<a ', '<a style="color:#0298CD"').html_safe %>
+</div>

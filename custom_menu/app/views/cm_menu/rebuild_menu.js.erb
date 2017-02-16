@@ -1,0 +1,12 @@
+$('#errorExplanation').remove();
+$('.modal_window').modal_window('hide');
+
+<% if @errors.present? %>
+  $('#content h2:first').after('<div id="errorExplanation"><ul><li><%= escape_javascript(@errors.values.flatten.uniq.join('</li><li>').html_safe) %></li></ul></div>');
+  <% @errors.keys.each do |err_id| %>
+    $('li.dd-item[data-id="<%= err_id.to_s %>"]').addClass('cm-error');
+  <% end %>
+<% else %>
+  $('#content .flash').remove();
+  $('#content').prepend('<div class="flash notice"><%= l(:text_cm_menu_tree_was_saved) %></div>');
+<% end %>

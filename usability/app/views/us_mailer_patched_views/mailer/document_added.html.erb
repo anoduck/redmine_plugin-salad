@@ -1,0 +1,5 @@
+<% rmp_mailer_header(link_to(@document.title, @document_url, style: 'color:#0298CD').html_safe + ' (' + @document.category.name + ')') %>
+
+<div style="padding: 0 20px 20px 20px; color: #000; font-size: 14px;">
+  <%= textilizable(@document, :description, only_path: false).gsub('<a ', '<a style="color:#0298CD"').html_safe %>
+</div>

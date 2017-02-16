@@ -1,0 +1,31 @@
+<% if (Setting.plugin_usability || {})['use_custom_project_members_form'] %>
+  <%= form_tag project_memberships_path(@project), id: 'add_members_to_project', remote: true, method: :post do  %>
+    <div style="display: inline-block; vertical-align: top; margin-bottom: 10px;">
+      <label for="principals_for_new_member"><%= l(:label_user_plural) %></label>
+      <br>
+      <%
+         principals = Principal.active.sorted.not_member_of(@project)
+         principals = principals.visible if Redmine::VERSION.to_s >= '3.0.0'
+      %>
+      <%= select_tag( 'membership[user_ids][]',
+                      options_for_select(principals.map {|m| [m.name, m.id]}, nil),
+                      {class: 'select2_members', id: 'principals_for_new_member', multiple: true} ) %>
+    </div>
+    <div style="display: inline-block; padding-left: 10px; vertical-align: top; margin-bottom: 10px;">
+      <label for="roles_for_new_members"><%= l(:label_role_plural) %></label>
+      <br>
+      <%= select_tag( 'membership[role_ids][]',
+                      options_for_select(User.current.managed_roles(@project).map {|r| [r.name, r.id]}, nil),
+                      {class: 'select2_members', id: 'roles_for_new_members',  multiple: true} ) %>
+    </div>
+    <div style="display: inline-block; padding-left: 10px; vertical-align: top; padding-top: 3px;" class="buttons">
+      <%= submit_tag l(:button_add), :id => 'member-add-submit', style: 'height: 27px;' %>
+    </div>
+  <% end %>
+  <script type="text/javascript" charset="utf-8">
+      $('.select2_members').select2({
+          width: 320,
+          allowClear: true
+      });
+  </script>
+<% end %>

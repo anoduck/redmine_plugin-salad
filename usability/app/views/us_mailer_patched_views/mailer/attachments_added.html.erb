@@ -1,0 +1,7 @@
+<% rmp_mailer_header(link_to(@added_to, @added_to_url, style: 'color:#0298CD')) %>
+
+<div style="padding: 0 20px 20px 20px; color: #000; font-size: 14px;">
+  <% @attachments.each do |attachment | %>
+    <div><%= attachment.filename %></div>
+  <% end %>
+</div>

@@ -1,0 +1,54 @@
+<% settings = Setting.plugin_custom_menu || {} %>
+
+<%= javascript_include_tag 'custom_menu.js', plugin: :custom_menu %>
+<%= stylesheet_link_tag 'custom_menu.css', plugin: :custom_menu %>
+
+<%= javascript_include_tag 'bootstrap.dropdown.js', plugin: :custom_menu %>
+<%= stylesheet_link_tag 'bootstrap.dropdown.css', plugin: :custom_menu %>
+
+<% if controller.controller_name == 'cm_menu' %>
+  <%= javascript_include_tag 'jquery.nestable.js', plugin: :custom_menu %>
+  <%= stylesheet_link_tag 'nestable.css', plugin: :custom_menu %>
+  <%= javascript_include_tag 'nestable.js', plugin: :custom_menu %>
+<% end %>
+
+<% if Redmine::VERSION.to_s >= '3.2.0' %>
+  <%= stylesheet_link_tag :_responsive, plugin: :custom_menu %>
+<% end %>
+
+<% if settings['use_custom_menu'] %>
+  <%= stylesheet_link_tag :cm_responsive, plugin: :custom_menu %>
+  <%= javascript_include_tag :cm_responsive, plugin: :custom_menu %>
+<% end %>
+
+<%# Passing plugin settings from server to client %>
+<script type="text/javascript">
+
+  RMPlus.CustomMenu = (function(my){
+    var my = my || {};
+
+    my.settings = <%= settings.to_json.html_safe %>;
+
+    my.label_export_to_format = '<%= l(:label_export_to_format).html_safe %>';
+
+    my.links_menu_tag = '<div class="dropdown nav pull-right" id="cm_contextual_menu" style="display: none;"><a href="#" class="dropdown-toggle in_link icon icon-dd-menu" data-toggle="dropdown"><span><%= l(:label_cm_more) %></span></a><ul id="dd-ul" class="dropdown-menu" role="menu" aria-labelledby="dLabel"></ul></div>';
+
+    return my;
+  })(RMPlus.CustomMenu || {});
+
+</script>
+
+<% if User.current.logged? %>
+  <div id="cm_quick_header_link">
+    <% if Redmine::Plugin.installed?(:magic_my_page) %>
+      <%= link_to '', {controller: :my, action: :page}, class: 'fa fa-home fa-3x' %>
+    <% end %>
+    <% if Redmine::Plugin.installed?(:service_desk) %>
+        <%= link_to '', {controller: :sd_requests, action: :index, q: 'on_me'}, class: 'fa fa-ticket fa-3x' %>
+    <% end %>
+    <% if Redmine::Plugin.installed?(:kpi) %>
+        <%= link_to '', {controller: :kpi, action: :effectiveness}, class: 'fa fa-credit-card fa-3x' %>
+    <% end %>
+  </div>
+<% end %>
+

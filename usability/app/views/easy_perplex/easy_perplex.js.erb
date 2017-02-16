@@ -1,0 +1,11 @@
+RMPlus.Usability.show_flashes('<%= flash[:error] %>', '<%= flash[:notice] %>')
+<% flash.delete(:error); flash.delete(:notice) %>
+
+<% if (!@unders.nil? && @unders != [ ]) %>
+  $('#easy-perplex-modal-window').html("<%= escape_javascript(render partial: 'easy_perplex_modal') %>");
+  $('#us-subordinates-select2').select2({
+    placeholder: '<%= l(:label_usability_easy_perplex_select_subordinate) %>',
+    allowClear: true
+  });
+  $(window).trigger("resize");
+<% end %>

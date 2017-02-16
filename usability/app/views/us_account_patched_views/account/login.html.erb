@@ -1,0 +1,199 @@
+<% content_for :header_tags do %>
+  <style>
+    .rmp-background {
+      max-width: 320px;
+    }
+    .rmp-wrapper {
+      padding: 1px;
+      min-width: 320px;
+      box-sizing: border-box;
+    }
+    div.rmp-divider {
+      margin: 10px -1px;
+    }
+    .us-logo {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .us-register a {
+      font-size: 11px;
+    }
+
+    .us-style-body {
+      margin: 20px 0;
+      padding: 0 20px;
+      border: none;
+    }
+    .us-style-bottom {
+      background: #f7f7f7;
+      padding: 20px;
+      margin: -10px -1px -1px -1px;
+    }
+    .us-style-body div {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .us-style-body input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .us-style-body input.us-input {
+      border-radius: 4px;
+      font-size: 14px;
+      padding: 8px 8px 8px 35px;
+      border: 1px solid #ccc;
+      box-shadow: inset 1px 1px 1px rgba(204, 204, 204, 0.5);
+    }
+
+    .us-style-body input.us-input:focus {
+      outline: none;
+      border: 1px solid #77baed;
+      box-shadow: 0 0 5px #77baed, inset 1px 1px 1px rgba(204, 204, 204, 0.5);
+    }
+
+    .us-style-body input.us-input + span.fa {
+      color: #000;
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+    }
+
+    .us-style-body input.us-input[value=''] + span.fa {
+      color: #ccc;
+    }
+
+    .us-style-body input::-webkit-input-placeholder {
+      text-overflow: ellipsis;
+      color: #b3b3b3;
+      font-style: italic;
+    }
+    .us-style-body input::-moz-placeholder {
+      text-overflow: ellipsis;
+      color: #b3b3b3;
+      font-style: italic;
+    }
+    .us-style-body input:-moz-placeholder {
+      text-overflow: ellipsis;
+      color: #b3b3b3;
+      font-style: italic;
+    }
+    .us-style-body input:-ms-input-placeholder {
+      text-overflow: ellipsis;
+      color: #b3b3b3;
+      font-style: italic;
+    }
+
+    .us-style-body .flash {
+      padding: 8px 35px 8px 14px;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      border-radius: 4px;
+      background-image: none;
+      color: #B94A48;
+      background-color: #F2DEDE;
+      border: 1px solid #EED3D7;
+    }
+
+    .us-log-in-btn {
+      border: none;
+      outline: none !important;
+      color: #fff;
+      padding: 8px;
+      cursor: pointer;
+
+      -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+      transition: border .25s linear, color .25s linear, background-color .25s linear;
+
+      background: #d20067;
+      background-image: -webkit-linear-gradient(bottom, #ae0055, #d20067);
+      background-image: -moz-linear-gradient(bottom, #ae0055, #d20067);
+      background-image: -o-linear-gradient(bottom, #ae0055, #d20067);
+      background-image: linear-gradient(to top, #ae0055, #d20067);
+      border-radius: 5px;
+
+      box-shadow: 0 4px 0 #78003b;
+    }
+    .us-log-in-btn:hover {
+      position: relative;
+      top: 2px;
+      box-shadow: 0 2px 0 #78003b;
+      background: #d30067;
+    }
+  </style>
+<% end %>
+
+<% content_for :header do %>
+  <h1>
+    <p><%= l(:label_us_login_hello_zone) %></p>
+    <%= Setting.app_title %>
+  </h1>
+<% end %>
+
+<% content_for :place do %>
+  <% if !User.current.logged? && Setting.self_registration? %>
+    <div class="us-register">
+      <%= link_to l(:label_us_login_hello_zone_register), register_path %>
+    </div>
+  <% end %>
+
+  <div class="us-logo">
+    <%= link_to(image_tag('logo.png', plugin: :usability, alt: l(:label_rmplus_logo), title: l(:label_rmplus_logo), width: 75, style: 'vertical-align: bottom;'), 'http://rmplus.pro/', class: 'no_line') %>
+  </div>
+<% end %>
+
+<%= form_tag(signin_path) do %>
+  <%= back_url_hidden_field_tag %>
+
+  <div class="us-style-body">
+    <div>
+      <%= text_field_tag 'username', params[:username], tabindex: 2, placeholder: l(:label_us_login_input_username), class: 'us-input' %>
+      <span class="fa fa-user"></span>
+    </div>
+    <div>
+      <%= password_field_tag 'password', '', tabindex: 2, placeholder: l(:label_us_login_input_password), class: 'us-input' %>
+      <span class="fa fa-unlock"></span>
+    </div>
+    <% if Setting.openid? %>
+      <div>
+        <%= text_field_tag "openid_url", nil, tabindex: 3, class: 'us-input' %>
+      </div>
+    <% end %>
+
+    <input type="submit" name="login" value="<%=l(:label_us_login_submit)%>" tabindex="5" class="us-log-in-btn">
+  </div>
+
+  <div class="rmp-divider"></div>
+
+  <div class="us-style-bottom">
+    <% if Setting.autologin? %>
+      <label for="autologin"><%= check_box_tag 'autologin', 1, false, tabindex: 4 %> <%= l(:label_us_login_footer_remember_me) %></label>
+    <% end %>
+    <% if Setting.lost_password? %>
+      <%= link_to l(:label_us_login_footer_restore_password), lost_password_path, style: 'float: right;' %>
+    <% end %>
+    <div class="C"></div>
+  </div>
+<% end %>
+
+<% rmp_html_title(['Redmine', l(:label_us_login_hello_zone)]) %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#login-form ').remove();
+
+    $('#username, #password').on('change keyup input autocomplete textInput', function() {
+      this.setAttribute('value', this.value ? ('<%= params[:username] %>' || '1') : '');
+    }).trigger('keyup');
+
+
+    $('.us-style-body').prepend($('div.flash'));
+
+    <% if params[:username].present? %>
+      $('#password').focus();
+    <% else %>
+      $('#username').focus();
+    <% end %>
+  });
+</script>

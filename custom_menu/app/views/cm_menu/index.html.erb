@@ -1,0 +1,61 @@
+<div class="contextual">
+  <%= link_to("<span>#{l(:label_cm_add_new_item)}</span>".html_safe, '#', class: 'icon icon-add in_link link_to_modal click_out', id: 'cm-new-item') %>
+</div>
+
+<h2><%= l(:label_cm_manage_menu) %></h2>
+
+<div class="autoscroll">
+  <table class="cm-table">
+    <tr>
+      <td><%= l(:label_cm_menu_type_top_menu) %></td>
+      <td><%= l(:label_cm_menu_type_account_menu) %></td>
+      <td><%= l(:label_cm_menu_available_items) %></td>
+    </tr>
+    <tr>
+      <td width="40%" style="vertical-align: top;">
+        <div id="cm-manage-top_menu" class="dd cm-managing">
+          <%= render_custom_menu_for_admin(@top_menu_items) %>
+          <% if @top_menu_items.blank? %>
+            <div class="dd-empty"></div>
+          <% end %>
+        </div>
+      </td>
+      <td width="40%" style="vertical-align: top;">
+        <div id="cm-manage-account_menu" class="dd cm-managing">
+          <%= render_custom_menu_for_admin(@account_menu_items) %>
+          <% if @account_menu_items.blank? %>
+            <div class="dd-empty"></div>
+          <% end %>
+        </div>
+      </td>
+      <td width="20%" style="vertical-align: top;">
+        <div id="cm-admin-items" class="dd" data-confirm="<%= l(:text_are_you_sure) %>">
+          <ul class="dd-list">
+            <%
+              its = []
+              CmItem.available_items.each do |k, items|
+                its += items.is_a?(Hash) ? items.map { |code, it| { ui_sort: k.ui_order, item_label: k.item_label(code), code: code, name: k.name, multiple: k.multiple? } } : []
+              end
+
+              its = its.sort_by { |it| "#{it[:ui_sort]}-#{it[:item_label]}" }
+            %>
+            <% its.each do |it| %>
+              <li class="dd-item" data-type="<%= it[:name] %>" data-code="<%= it[:code] %>"<%= it[:multiple] ? ' data-clone="true"'.html_safe : '' %>>
+                <div class="dd-content">
+                  <div class="dd-handle"></div>
+                  <%= it[:item_label].present? ? it[:item_label] : l(:label_cm_not_available) %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <%= button_tag l(:label_cm_save_menu_structure), style: 'font-size: 1.5em', id: 'cm-save-structure' %>
+</div>
+
+<div id="cm-modal-form" style="display:none;">
+  <%= render partial: 'form' %>
+</div>

@@ -1,0 +1,8 @@
+<% rmp_mailer_header(l(:mail_body_wiki_content_updated, id: link_to(@wiki_content.page.pretty_title, @wiki_content_url), author: h(@wiki_content.author))) %>
+
+<div style="padding: 0 20px 20px 20px; color: #000; font-size: 14px;">
+  <p><%= @wiki_content.comments %></p>
+
+  <p><%= l(:label_view_diff) %>:<br />
+  <%= link_to @wiki_diff_url, @wiki_diff_url, style: 'color:#0298CD' %></p>
+</div>

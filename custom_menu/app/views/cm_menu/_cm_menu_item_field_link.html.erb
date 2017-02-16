@@ -1,0 +1,59 @@
+<tr>
+  <td><label for="cm_item_caption"><%= l(:field_cm_item_caption) %></label><span class="required"> *</span></td>
+  <td><%= text_field_tag 'cm_item[caption]', '', size: 30, required: true %></td>
+</tr>
+<tr>
+  <td><label for="cm_item_custom_url"><%= l(:field_cm_item_custom_url) %></label></td>
+  <td><%= text_field_tag 'cm_item[custom_url]', '', size: 30 %></td>
+</tr>
+<tr>
+  <td><label for="cm_item_options_class"><%= l(:label_cm_custom_item_class) %></label></td>
+  <td><%= text_field_tag 'cm_item[options][class]', '', size: 30 %></td>
+</tr>
+<tr>
+  <td></td>
+  <td>
+    <label>
+      <%= hidden_field_tag 'cm_item[logged]', 'false', id: nil %>
+      <%= check_box_tag 'cm_item[logged]', 'true', false %>
+      &mdash;
+      <%= l(:field_cm_item_logged) %>
+    </label>
+  </td>
+</tr>
+<tr>
+  <td>
+    <%= l(:label_cm_item_visibility) %>
+  </td>
+  <td>
+    <div>
+      <label>
+        <%= radio_button_tag 'cm_item[visibility]', CmItem::VISIBILITY_PUBLIC.to_s, false, id: 'cm_item_visibility_public' %>
+        &mdash;
+        <%= l(:label_cm_item_visibility_public) %>
+      </label>
+    </div>
+    <div>
+      <label>
+        <%= radio_button_tag 'cm_item[visibility]', CmItem::VISIBILITY_ADMIN.to_s, false, id: 'cm_item_visibility_admin' %>
+        &mdash;
+        <%= l(:label_cm_item_visibility_admin) %>
+      </label>
+    </div>
+    <div>
+      <label>
+        <%= radio_button_tag 'cm_item[visibility]', CmItem::VISIBILITY_ROLE.to_s, false, id: 'cm_item_visibility_role' %>
+        &mdash;
+        <%= l(:label_cm_item_visibility_role) %>
+      </label>
+    </div>
+    <div class="autoscroll cm-visibility-by-roles" id="cm_item_role_ids">
+      <% Role.where(builtin: 0).order('name').each do |role| %>
+          <div>
+            <label><%= check_box_tag 'cm_item[role_ids][]', role.id, false, id: nil %> <%= role.name %></label>
+          </div>
+      <% end %>
+      <%= hidden_field_tag 'cm_item[role_ids][]', '' %>
+    </div>
+  </td>
+</tr>

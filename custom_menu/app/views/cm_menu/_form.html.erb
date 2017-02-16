@@ -1,0 +1,32 @@
+<table style="display: none;" id="cm_storage_for_form">
+  <tbody id="cm-item-field-query" style="display: none;">
+  <%= render partial: 'cm_menu_item_field_query' %>
+  </tbody>
+</table>
+<h3 id="cm-new-menu-item"><%= l(:label_cm_add_new_item) %></h3>
+<h3 id="cm-edit-menu-item" style="display:none;"></h3>
+
+<%= form_tag({}, id: 'cm-menu-form') do %>
+  <%= hidden_field_tag 'cm_item[type]', '' %>
+  <table class="plugin_settings">
+    <tbody id="cm-menu-item-menu">
+      <tr>
+        <td><label for="cm_item_menu"><%= l(:field_cm_item_menu) %></label></td>
+        <td><%= select_tag 'cm_item[menu]', options_for_select([[l(:label_cm_menu_type_top_menu), 'top_menu'], [l(:label_cm_menu_type_account_menu), 'account_menu']], 'top_menu') %></td>
+      </tr>
+      <tr>
+        <td><label for="cm_item_item_type"><%= l(:label_cm_menu_item_type) %></label></td>
+        <td><%= select_tag 'cm_item[item_type]', options_for_select([[l(:label_cm_any_link), 'CmItemCustom'], [l(:label_cm_any_query), 'CmItemQuery']], 'CmItemCustom') %></td>
+      </tr>
+    </tbody>
+    <tbody id="cm-item-field-link">
+      <%= render partial: 'cm_menu_item_field_link' %>
+    </tbody>
+    <tr>
+      <td></td>
+      <td>
+        <%= submit_tag l(:button_save) %>
+      </td>
+    </tr>
+  </table>
+<% end %>

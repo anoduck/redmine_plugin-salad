@@ -1,0 +1,5 @@
+<% if custom_field.is_a?(IssueCustomField) && custom_field.field_format == 'list' %>
+  <p>
+    <%= form.check_box :us_store_for_new %>
+  </p>
+<% end %>

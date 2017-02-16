@@ -1,0 +1,495 @@
+<div style="padding: 10px;">
+<table class="plugin_settings" style="width: 100%;">
+<tbody>
+
+<tr>
+  <td>
+    <% progress_bars = [[l(:usability_pb_std),'std'],
+                        [l(:usability_pb_tiny),'tiny'],
+                        [l(:usability_pb_pie),'pie'],
+                        [l(:usability_pb_tor),'tor']] %>
+    <label for="settings_usability_progress_bar_type">
+      <%= l(:settings_usability_progress_bar_type) %>
+    </label>
+  </td>
+  <td>
+    <%= select_tag 'settings[usability_progress_bar_type]',
+                   options_for_select(progress_bars, @settings['usability_progress_bar_type']) %>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+      <%= check_box_tag 'settings[disable_ajax_preloader]', true, @settings['disable_ajax_preloader'] %>
+      <label for="settings_disable_ajax_preloader">
+         &mdash; <%= l(:settings_disable_default_preloader) %>
+      </label>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+      <%= check_box_tag 'settings[enable_underlined_links]', true, @settings['enable_underlined_links'] %>
+      <label for="settings_enable_underlined_links">
+         &mdash; <%= l(:settings_enable_underlined_links).html_safe %>
+      </label>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+      <%= check_box_tag 'settings[remove_project_page_header_breadcrumb]', true, @settings['remove_project_page_header_breadcrumb'] %>
+      <label for="settings_remove_project_page_header_breadcrumb">
+         &mdash; <%= l(:settings_remove_project_page_header_breadcrumb) %>
+      </label>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+      <%= check_box_tag 'settings[dont_render_project_jump_box]', true, @settings['dont_render_project_jump_box'] %>
+      <label for="settings_dont_render_project_jump_box">
+         &mdash; <%= l(:settings_dont_render_project_jump_box) %>
+      </label>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+    <%= check_box_tag 'settings[enable_download_attachments_all_in_one]', true, @settings['enable_download_attachments_all_in_one'] %>
+    <label for="settings_enable_download_attachments_all_in_one">
+       &mdash; <%= l(:settings_enable_download_attachments_all_in_one) %>
+    </label>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+    <%= check_box_tag 'settings[totals_in_queries]', true, @settings['totals_in_queries'] %>
+    <label for="settings_totals_in_queries">
+       &mdash; <%= l(:label_usability_settings_totals_in_queries) %>
+    </label>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+    <%= check_box_tag 'settings[replace_login_page]', true, @settings['replace_login_page'] %>
+    <label for="settings_replace_login_page">
+       &mdash; <%= l(:label_usability_settings_replace_login_page) %>
+    </label>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+    <label>
+      <%= check_box_tag 'settings[replace_mails_view]', true, @settings['replace_mails_view'] %>
+      &mdash;
+      <%= l(:label_usability_settings_replace_mails_view) %>
+    </label>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+    <%= check_box_tag 'settings[enable_full_activities_for_issues]', true, @settings['enable_full_activities_for_issues'] %>
+    <label for="settings_enable_full_activities_for_issues">
+      &mdash; <%= l(:label_usability_settings_enable_full_activities_for_issues) %>
+    </label>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+    <%= check_box_tag 'settings[hide_toolbar_for_wiki_textareas]', true, @settings['hide_toolbar_for_wiki_textareas'] %>
+    <label for="settings_hide_toolbar_for_wiki_textareas">
+      &mdash; <%= l(:label_usability_settings_hide_toolbar_for_wiki_textareas) %>
+    </label>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+
+    <%= check_box_tag('settings[use_copy_from_clipboard]', true, @settings['use_copy_from_clipboard']) %>
+    <label for="settings_use_copy_from_clipboard">
+      &mdash; <nobr><%= l(:setting_label_usability_use_copy_from_clipboard) %> </nobr>
+      <a href="#" rel="tooltip" data-original-title="<%= l(:setting_info_usability_use_copy_from_clipboard) %>" class="icon icon-inform">&nbsp;</a>
+    </label>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+    <%= check_box_tag 'settings[join_attachments_to_group]', true, @settings['join_attachments_to_group'] %>
+    <label for="settings_join_attachments_to_group"> &mdash; <%= l(:label_usability_settings_join_attachments_to_group) %> </label>
+  </td>
+</tr>
+
+<% if Redmine::VERSION.to_s >= '3.0.0' %>
+  <tr>
+    <td></td>
+    <td>
+      <%= check_box_tag 'settings[use_custom_project_members_form]', true, @settings['use_custom_project_members_form'] %>
+      <label for="settings_use_custom_project_members_form"> &mdash; <%= l(:label_usability_settings_use_custom_project_members_form) %> </label>
+    </td>
+  </tr>
+<% end %>
+
+<tr>
+  <td></td>
+  <td>
+    <%= check_box_tag 'settings[use_static_date_in_history]', true, @settings['use_static_date_in_history'] %>
+    <label for="settings_use_static_date_in_history"> &mdash; <%= l(:label_usability_settings_use_static_date_in_history) %> </label>
+    <a href="#" rel="tooltip" data-original-title="<%= l(:info_usability_settings_use_static_date_in_history) %>" class="icon icon-inform">&nbsp;</a>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+    <%= check_box_tag 'settings[collapse_changes_for_history]', true, @settings['collapse_changes_for_history'] %>
+    <label for="settings_collapse_changes_for_history"> &mdash; <%= l(:label_usability_settings_collapse_changes_for_history) %> </label>
+    <a href="#" rel="tooltip" data-original-title="<%= l(:info_usability_settings_collapse_changes_for_history) %>" class="icon icon-inform">&nbsp;</a>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+    <%= check_box_tag 'settings[replace_link_textilizable]', true, @settings['replace_link_textilizable'] %>
+    <label for="settings_replace_link_textilizable"> &mdash; <%= l(:label_usability_replace_link_textilizable) %> </label>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+    <label>
+      <%= check_box_tag 'settings[hide_next_prev_issues]', true, @settings['hide_next_prev_issues'] %>
+      &mdash;
+      <%= l(:label_us_settings_hide_next_prev_issues) %>
+      <a href="#" rel="tooltip" data-original-title="<%= l(:info_us_settings_hide_next_prev_issues) %>" title="<%= l(:info_us_settings_hide_next_prev_issues) %>" class="icon icon-inform">&nbsp;</a>
+    </label>
+  </td>
+</tr>
+
+<tr class="rmp-settings-group">
+  <td></td>
+  <td><%= l(:label_usability_settings_group_autosave) %></td>
+</tr>
+
+
+<tr>
+  <td></td>
+  <td>
+    <%= check_box_tag 'settings[use_autosave_fields]', true, @settings['use_autosave_fields'] %>
+    <label for="settings_use_autosave_fields">
+      &mdash; <%= l(:label_usability_settings_use_autosave_fields) %>
+    </label>
+  </td>
+</tr>
+
+<tr class="us-autosave-fields"<%= ' style="display:none;"'.html_safe unless @settings['use_autosave_fields'] %>>
+  <td><label for="settings_autosave_fields"><%= l(:label_usability_settings_autosave_fields) %></label></td>
+  <td>
+    <%= text_field_tag 'settings[autosave_fields]', @settings['autosave_fields'].blank? ? '.us-autosave' : @settings['autosave_fields'], size: 90 %>
+  </td>
+</tr>
+<tr class="us-autosave-fields"<%= ' style="display:none;"'.html_safe unless @settings['use_autosave_fields'] %>>
+  <td><label for="settings_autosave_fields_limitation"><%= l(:label_usability_settings_autosave_fields_limitation) %></label></td>
+  <td>
+    <%= text_field_tag 'settings[autosave_fields_limitation]', (@settings['autosave_fields_limitation'] || 10).to_i, size: 3 %>
+  </td>
+</tr>
+
+<tr class="rmp-settings-group">
+  <td></td>
+  <td><%= l(:label_usability_settings_sidebar) %></td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+      <%= check_box_tag 'settings[show_sidebar_close_button]', true, @settings['show_sidebar_close_button'] %>
+      <label for="settings_show_sidebar_close_button">
+         &mdash; <%= l(:settings_show_sidebar_close_button) %>
+      </label>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <label for="settings_usability_sidebar_width">
+      <%= l(:settings_usability_sidebar_width) %>
+    </label>
+  </td>
+  <td>
+    <%= text_field_tag 'settings[usability_sidebar_width]', @settings['usability_sidebar_width'], size: 6 %>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <label for="settings_usability_sidebar_gap">
+      <%= l(:settings_usability_sidebar_gap) %>
+    </label>
+  </td>
+  <td>
+    <%= text_field_tag 'settings[usability_sidebar_gap]', @settings['usability_sidebar_gap'], size: 6 %>
+  </td>
+</tr>
+
+<tr class="rmp-settings-group">
+  <td></td>
+  <td><%= l(:label_usability_settings_default_page) %></td>
+</tr>
+
+<tr>
+  <td>
+    <label for="settings_default_page" class="for-checkbox">
+      <%= l(:settings_default_page) %>
+    </label>
+  </td>
+  <td>
+    <%= text_field_tag 'settings[default_page]', @settings['default_page'], size: 30 %>
+    <a href="#" rel="tooltip" data-original-title="<%= l(:info_default_page) %>" title="<%= l(:info_default_page) %>" class="icon icon-inform">&nbsp;</a>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+    <%= check_box_tag 'settings[enable_custom_default_page]', true, @settings['enable_custom_default_page'] %>
+    <label for="settings_enable_custom_default_page">
+       &mdash; <%= l(:settings_enable_custom_default_page).html_safe %>
+    </label>
+  </td>
+</tr>
+
+<tr class="rmp-settings-group">
+  <td></td>
+  <td><%= l(:settings_behaviour_on_errors) %></td>
+</tr>
+
+
+<tr>
+  <td>
+    <label for="settings_users_at_error">
+      <%= l(:settings_ask_users_at_error) %>:
+    </label>
+  </td>
+  <td>
+    <%= select_tag( 'settings[users_at_error]',
+                        options_for_select([['','']]+User.active.sort_by(&:name).map{|u| [u.name,u.id]}, @settings[:users_at_error]),
+                        {style: 'width:220px;', class: 'select2', multiple: true} ) %>
+  </td>
+</tr>
+
+<% if Redmine::Plugin.installed?(:service_desk) %>
+  <tr>
+    <td>
+      <label>
+        <%= l(:label_sd_request_type_select) %>
+      </label>
+    </td>
+    <td>
+      <div class="L" id="sd-request-user-department-field">
+        <% req = SdRequestIncident.new %>
+        <%= select_tag 'settings[user_department_id]', options_for_select(req.sd_options_for_departments.map { |d| [d.name, d.id] }, @settings['user_department_id']), id: 'sd_request_user_department_id', include_blank: true, placeholder: l(:label_department), style: 'width: 300px;' %>
+        <div style="height: 38px;display: inline;"><big><big>&nbsp;&rarr;&nbsp;</big></big></div>
+      </div>
+
+      <div id="sd-target-department-field" class="L">
+        <% target_dep = UserDepartment.where(id: @settings['target_department']).first %>
+        <%= select_tag 'settings[target_department]', target_dep ? options_for_select([[target_dep.name, target_dep.id]], @settings['target_department']) : '', id: 'sd_request_target_department_id', include_blank: true, placeholder: l(:field_target_department), style: 'width: 300px;' %>
+        <div style="height: 38px; display: inline;"><big><big>&nbsp;&rarr;&nbsp;</big></big></div>
+      </div>
+
+      <div id="sd-request-type-field" class="L">
+        <% sd_request_type = SdRequestType.where(id: @settings['request_type']).first %>
+        <%= select_tag 'settings[request_type]', sd_request_type ? options_for_select([[sd_request_type.name, sd_request_type.id]], sd_request_type.id) : '', id: 'sd_request_sd_request_type_id', include_blank: true, style: 'min-width:220px;', placeholder: l(:field_request_type), style: 'width: 300px;' %>
+        <button type="button" data-url="<%= url_for(controller: :sd_request_types, action: :filter_list, service_use: true) %>" class="btn btn-info btn-lg sd_type_select sd_ajax_edit show-loader" data-target="ajax_form" title="<%= l(:sd_select) %>"></button>
+      </div>
+    </td>
+  </tr>
+
+  <script>
+    $('#sd_request_user_department_id').select2({ allowClear: true, placeholder: '<%= l(:label_department) %>' });
+    $('#sd_request_target_department_id').select2({ allowClear: true, placeholder: '<%= l(:field_target_department) %>' });
+    $('#sd_request_sd_request_type_id').select2({ allowClear: true, placeholder: '<%= l(:field_request_type) %>' });
+
+    <% d = req.sd_options_for_selector %>
+
+    RMPlus.SD.departments_data = <%= d[0].to_json.html_safe %>;
+    RMPlus.SD.types_data = <%= d[1].to_json.html_safe %>;
+
+    RMPlus.SD.department_names = <%= UserDepartment.all.inject({}) { |res, t| res[t.id] = t.name; res }.to_json.html_safe %>;
+    RMPlus.SD.type_names = <%= SdRequestType.active.all.inject({}) { |res, t| res[t.id] = t.name; res }.to_json.html_safe %>;
+    RMPlus.SD.priority_names = <%= SdPriority.all.inject({}) { |res, t| res[t.id] = t.name; res }.to_json.html_safe %>;
+    RMPlus.SD.filter_request_dep_branch_type_options('type');
+  </script>
+<% end %>
+
+<% if Redmine::Plugin.installed?(:ldap_users_sync) %>
+<tr class="rmp-settings-group">
+  <td></td>
+  <td><%= l(:label_usability_settings_easy_perplex) %></td>
+</tr>
+
+<tr>
+  <td></td>
+  <td>
+    <%= check_box_tag 'settings[enable_easy_rm_tasks]', true, @settings['enable_easy_rm_tasks'] %>
+    <label for="settings_enable_easy_rm_tasks">
+       &mdash; <%= l(:settings_enable_easy_rm_tasks) %>
+    </label>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <label for="settings_easy_perplex_executor_roles">
+      <span><%= l(:settings_easy_perplex_executor_roles) %>:</span>
+    </label>
+  </td>
+  <td>
+    <%= select_tag 'settings[easy_perplex_executor_roles]',
+                    options_for_select([['---', nil]] + Role.order(:name).givable.collect { |it| [it.name, it.id] }, @settings['easy_perplex_executor_roles']),
+                    multiple: true,
+                    class: 'select2' %>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <label for="settings_easy_perplex_cf_customer_id">
+      <span><%= l(:settings_easy_perplex_cf_customer_id) %>:</span>
+    </label>
+  </td>
+  <td>
+    <%= select_tag 'settings[easy_perplex_cf_customer_id]',
+                    options_for_select( [['---', nil]] + CustomField.order(:name)
+                                                                   .where(type: 'IssueCustomField', field_format: 'user')
+                                                                   .collect { |e| [e.name, e.id] },
+                                        @settings['easy_perplex_cf_customer_id'] ),
+                    class: 'cf-fast-change' %>
+  </td>
+</tr>
+<% end %>
+
+<tr class="rmp-settings-group">
+  <td></td>
+  <td><%= l(:label_usability_fast_link_top_page) %></td>
+</tr>
+
+<tr>
+  <td>
+    <label for="settings_fast_link_top_page_url">
+      <%= l(:label_usability_fast_link_url) %>
+    </label>
+  </td>
+  <td>
+    <%= text_field_tag 'settings[fast_link_top_page][url]', (@settings['fast_link_top_page'] || {})['url'], size: 30 %>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <label for="settings_fast_link_top_page_text">
+      <%= l(:label_usability_fast_link_text) %>
+    </label>
+  </td>
+  <td>
+    <%= text_field_tag 'settings[fast_link_top_page][text]', (@settings['fast_link_top_page'] || {})['text'], size: 30 %>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <label for='settings_fast_link_top_page_icon'>
+      <%= l(:acl_button_css) %>
+    </label>
+  </td>
+  <td>
+    <p>
+      <%= select_tag 'settings[fast_link_top_page][icon]', options_for_button_css((@settings['fast_link_top_page'] || {})['icon']) %>
+      <%= link_to "<span>#{l(:label_acl_upload_icons)}</span>".html_safe, { controller: :acl_style_css, action: :upload_icons }, class: 'rm-icon fa-upload in_link no_line acl_ajax_edit', style: 'margin: 3px 3px 0 0;', data: { target: 'ajax_form' } %>
+    </p>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <label for='settings_fast_link_top_page_color'>
+      <%= l(:label_usability_fast_link_color) %>
+    </label>
+  </td>
+  <td>
+    <%= text_field_tag 'settings[fast_link_top_page][color]', (@settings['fast_link_top_page'] || {})['color'], placeholder: '#FFFFFF' %>
+  </td>
+</tr>
+
+<tr>
+  <td></td>
+  <td id="settings_save_button">
+    <%= render file: File.join(File.dirname(__FILE__), '_rmplus_logo.html.erb') %>
+  </td>
+</tr>
+
+</tbody></table>
+</div>
+
+<script type="text/javascript">
+  $('#settings_use_autosave_fields').change(function() {
+    if (this.checked) { $('tr.us-autosave-fields').show(); }
+    else { $('tr.us-autosave-fields').hide(); }
+  });
+  $(document).ready(function () {
+    <% if Redmine::Plugin.installed?(:a_common_libs) %>
+      $('a[rel=tooltip]').tooltip({placement:'right'});
+
+      var field_select_css = $('#settings_fast_link_top_page_icon');
+
+      RMPlus.Utils.acl_prepare_css_styles(field_select_css);
+
+      field_select_css.select2({
+        width: '180px',
+        templateResult: RMPlus.Utils.acl_upload_icon,
+        templateSelection: RMPlus.Utils.acl_upload_icon,
+        escapeMarkup: function(m) { return m; }
+      }).trigger('change');
+    <% end %>
+
+    $('<a href="#" class="icon icon-edit fast-link"></a>').insertAfter('.cf-fast-change');
+
+    $(document.body).on('change', '.cf-fast-change', function () {
+      var next_href = $(this).next();
+      if (next_href.length == 1 && next_href.hasClass('fast-link')) {
+        next_href.attr('href', '/custom_fields/'+$(this).val().toString()+'/edit');
+        next_href.show();
+      }
+      if (next_href.length == 1 && ($(this).val().toString() == '' || $(this).val().toString() == 'undefined')) {
+        next_href.hide();
+      }
+    });
+
+    $('.cf-fast-change').trigger('change');
+
+  });
+
+</script>
+

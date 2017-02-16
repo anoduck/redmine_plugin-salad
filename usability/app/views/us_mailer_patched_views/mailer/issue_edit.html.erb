@@ -1,0 +1,19 @@
+<% rmp_mailer_header(l(:text_issue_updated, id: "##{@issue.id}", author: h(@journal.user)) + (@journal.private_notes? ? " &mdash; #{l(:field_private_notes)}".html_safe : '')) %>
+
+<div style="padding:0 20px 20px 20px; border-bottom: 1px solid #E5E5E5;">
+  <% if @journal_details.present? %>
+    <% details_to_strings(@journal_details, false, :only_path => false).each do |string| %>
+      <div><%= string %></div>
+    <% end %>
+  <% else %>
+    <%= l(:label_us_no_changes) %>
+  <% end %>
+</div>
+
+<% if @journal.notes.present? %>
+  <div style="background-color: #F7F7F7;font-size: 14px; border-bottom: 1px solid #E5E5E5; padding: 20px; margin-bottom: 20px;">
+    <%= textilizable(@journal, :notes, only_path: false) %>
+  </div>
+<% end %>
+
+<%= render partial: 'issue', formats: [:html], locals: { issue: @issue, users: @users, issue_url: @issue_url } %>

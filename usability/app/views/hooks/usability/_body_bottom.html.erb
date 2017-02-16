@@ -1,0 +1,37 @@
+<div id="BS_Modal" class="modal I fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 1060; display: none;">
+  <div class="modal-header">
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true"><%= l(:label_usability_close) %></button>
+    <button class="btn btn-primary"><%= l(:button_save) %></button>
+  </div>
+</div>
+
+<div id="easy-perplex-modal-window" class="modal hide fade" style="width: 500px; z-index: 1061; display: none;" data-width="500px" data-height="90%" aria-hidden="true" role="dialog">
+</div>
+<% if controller_name == 'news' && (action_name == 'index' || action_name == 'show') && @news.is_a?(News) %>
+  <p id="us-is-uncommentable">
+    <label for="news_is_uncommentable"><%= l(:label_news_uncommentable) %></label>
+    <%= check_box 'news', 'uncommentable', {}, 'true', 'false' %>
+  </p>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var p_is_uncommentable = $('#us-is-uncommentable').remove();
+      if ($('#news_summary').length > 0){
+        $('#news_summary').parent().after(p_is_uncommentable);
+      }
+    });
+  </script>
+<% end %>
+
+<% if controller_name == 'news' && action_name == 'show' && @news.try(:uncommentable) %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.comments').after("<p style = 'font-style: italic;'><%= l(:message_news_uncommentable) %></p>");
+    });
+  </script>
+<% end %>

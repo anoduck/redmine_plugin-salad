@@ -1,0 +1,31 @@
+<div style="padding: 0 20px 20px 20px; background-color: #fff">
+  <%= link_to("#{issue.tracker.name} ##{issue.id}: #{issue.subject}", issue_url, style: 'color:#0298CD') %>
+
+  <% items = us_email_issue_attributes(issue, users.first) %>
+
+  <table style="width: 100%;margin-top:20px">
+    <% items.each do |it| %>
+      <tr>
+        <td style="color:#A0A0A0"><%= it[0] %>:</td>
+        <td><%= it[1] %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <div style="border-bottom: 1px solid #E5E5E5; padding-top: 20px;margin-bottom:20px;"></div>
+
+  <div style="font-size: 14px;color:#000;margin-bottom:10px">
+    <%= textilizable(issue, :description, only_path: false).gsub('<a ', '<a style="color:#0298CD"').html_safe %>
+  </div>
+
+  <% if issue.attachments.any? %>
+    <div style="color:#A0A0A0; margin-bottom: 10px;">
+      <%= l(:label_attachment_plural) %>:
+    </div>
+
+    <% issue.attachments.each do |attachment| %>
+      <%= link_to_attachment attachment, download: true, only_path: false, style: 'color:#0298CD' %>
+      <i>(<%= number_to_human_size(attachment.filesize) %>)</i><br>
+    <% end %>
+  <% end %>
+</div>

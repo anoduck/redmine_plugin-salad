@@ -1,0 +1,16 @@
+<% if @user.auth_source %>
+  <% rmp_mailer_header(t(:mail_body_account_information_external, h(@user.auth_source.name))) %>
+
+  <div style="padding: 0 20px 20px 20px; color: #000; font-size: 14px;">
+    <%= l(:label_login) %>: <%= link_to @login_url, @login_url, style: 'color:#0298CD' %>
+  </div>
+
+<% else %>
+  <% rmp_mailer_header(t(:mail_body_account_information)) %>
+
+  <div style="padding: 0 20px 20px 20px; color: #000; font-size: 14px;">
+    <div><%= l(:field_login) %>: <%= @user.login %></div>
+    <div><%= l(:field_password) %>: <%= @password %></div>
+    <div><%= l(:label_login) %>: <%= link_to @login_url, @login_url, style: 'color:#0298CD' %></div>
+  </div>
+<% end %>

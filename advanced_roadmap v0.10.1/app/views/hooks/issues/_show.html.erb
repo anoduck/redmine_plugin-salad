@@ -1,0 +1,13 @@
+<%= issue_fields_rows do |rows|
+  milestones = @issue.fixed_version ? @issue.fixed_version.milestones.sort : []
+  milestones = milestones.collect {|m| link_to(m.name, {:controller => :milestones, :action => :show, :id => m.id})}.join(', ').html_safe
+  rows.left l(:label_milestone_plural), milestones, :class => 'milestones'
+
+  if @issue.rest_hours > 0 and
+     User.current.allowed_to?(:view_time_entries, @project) and
+     User.current.allowed_to?(:view_issue_estimated_hours, @project)
+    rows.right l(:label_roadmap_due_in, ''), l_hours(@issue.rest_hours), :class => 'rest_hours'
+  end
+end %>
+
+<%= render :partial => 'common/advanced_roadmap_footer' %>

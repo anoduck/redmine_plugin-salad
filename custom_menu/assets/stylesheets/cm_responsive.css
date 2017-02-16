@@ -1,0 +1,94 @@
+@media all and (max-width: 899px) {
+  .flyout-menu ul li:first-child a,
+  .flyout-menu ul li a {
+    border-top: 1px solid rgba(255,255,255,.1);
+  }
+  .flyout-menu ul li a.selected {
+    padding: 0 2px;
+  }
+  .flyout-menu ul > li:first-child > a {
+    border-top: none;
+  }
+  .flyout-menu ul .cm-menu-divider {
+    display: none;
+  }
+  .flyout-menu a,
+  .flyout-menu a:hover,
+  .flyout-menu a.no_line:not(.in_link) span,
+  .flyout-menu a.no_line:not(.in_link):hover span,
+  .flyout-menu ul li a,
+  .flyout-menu ul li a:hover,
+  .flyout-menu ul li a.no_line:not(.in_link) span,
+  .flyout-menu ul li a.no_line:not(.in_link):hover span {
+    border-bottom: none;
+    color: #295200;
+  }
+
+  .flyout-menu a.no_line:not(.in_link) > span.ac_counter,
+  .flyout-menu a.no_line:not(.in_link):hover > span.ac_counter{
+    color: white;
+  }
+
+  .flyout-menu a.in_link span,
+  .flyout-menu ul li a.in_link span {
+    /*border-bottom-color: #FFF;*/
+  }
+
+  fieldset.eq-sidebar-queries div ul li, .js-account-menu ul li, .js-general-menu ul li, ul.cm-js-menu-header li{
+    border-bottom: 1px solid rgba(221, 221, 221, 0.5);
+  }
+
+  ul.cm-js-menu-header li:last-child{
+    border: none;
+  }
+
+  .flyout-menu .cm-dropdown .cm-dropdown-menu {
+    padding-left: 8px;
+    display: none;
+  }
+  .flyout-menu .cm-dropdown.open .cm-dropdown-menu {
+    display: block;
+  }
+
+  .flyout-menu__search{
+    height: auto;
+  }
+
+  .flyout-menu h3,
+  .flyout-menu h4,
+  .flyout-menu > p,
+  .flyout-menu > a,
+  .flyout-menu ul li a,
+  .flyout-menu__search,
+  .flyout-menu__sidebar > div,
+  .flyout-menu__sidebar > p,
+  .flyout-menu__sidebar > a,
+  .flyout-menu__sidebar > form,
+  .flyout-menu > div,
+  .flyout-menu > form {
+    padding-left: 0;
+  }
+
+  .flyout-menu h3,
+  .flyout-menu h4,
+  .flyout-menu > div {
+    padding-left: 8px;
+    padding-right: 5px;
+  }
+
+  .flyout-menu ul li a {
+    border-bottom: none;
+  }
+  .flyout-menu .js-sidebar h3,
+  .flyout-menu .js-sidebar h4 {
+    margin-left: -8px;
+  }
+
+  .flyout-menu .cm-projects-tree {
+    max-height: none;
+  }
+
+  .flyout-menu .dropdown-backdrop {
+    display: none;
+  }
+}

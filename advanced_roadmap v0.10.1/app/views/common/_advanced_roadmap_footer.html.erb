@@ -1,0 +1,10 @@
+<%= javascript_tag do %>
+  $(document).ready(function() {
+    <%- link = link_to('Advanced roadmap',
+                       Redmine::Plugin::registered_plugins[:advanced_roadmap].url)
+        author = Redmine::Plugin::registered_plugins[:advanced_roadmap].author
+        copy_right = link_to('©', 'http://creativecommons.org/licenses/by-nd/4.0/')
+        legend = "Powered by #{link} plugin #{copy_right} 2009-2015 #{author}" -%>
+    $("#footer").append('<div class="bgl"><div class="bgr"><%= raw legend %></div></div>');
+  });
+<% end %>

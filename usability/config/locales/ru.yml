@@ -1,0 +1,144 @@
+# English strings go here for Rails i18n
+ru:
+  documents: "Документы"
+  mouse_click: "Клик мыши"
+  mouse_over: "Наведение мыши"
+  all_projects: "Все проекты"
+  appearance_and_usability: "Внешний вид и удобство использования"
+  select_an_event_to_open_the_pop_up_menu: "Выберите событие для открытия вспомогательного меню"
+  go_to_project_issues: "Перейти к заданиям проекта"
+
+  settings_ask_users_at_error: "К кому обратиться при ошибке"
+  settings_usability_sidebar_width: "Ширина бокового меню (px)"
+  settings_usability_sidebar_gap: "Отступ бокового меню (px)"
+  label_usability_settings_sidebar: "Параметры бокового меню"
+
+  label_usability_settings_new_request_params: "Параметры новых заявок пользователей"
+  settings_behaviour_on_errors: "Параметры поведения при ошибках в Redmine"
+
+  settings_disable_default_preloader: "Отключить штатный прелоадер Redmine."
+
+  settings_show_sidebar_close_button: "Позволить скрывать боковое меню."
+  settings_enable_underlined_links: "Вставлять дополнительные теги при загрузке страницы, чтобы обеспечить более хорошее подчеркивание ссылок (требуется <a href='https://bitbucket.org/dkuk/redmine_alex_skin'>наш скин для Redmine</a>)."
+  settings_remove_project_page_header_breadcrumb: "Не показывать родительские проекты в заголовке страницы проекта."
+  settings_dont_render_project_jump_box: "Убрать встроенную возможность быстрого перехода в проект."
+  settings_usability_progress_bar_type: "Вид отображения процента готовности"
+  settings_default_page: "Страница по умолчанию"
+  settings_enable_custom_default_page: 'Включить страницу по умолчанию (если не указано ничего, то будет использована <a href="/my/page">Моя страница</a>).'
+  settings_enable_easy_rm_tasks: 'Включить упрощенный механизм создания задания подчиненному'
+  settings_easy_perplex_executor_roles: 'Роли, использующиеся для определения исполнителя в проекте'
+  settings_easy_perplex_cf_customer_id: 'Настраиваемое поле, используемое в качестве заказчика в задаче'
+  settings_enable_download_attachments_all_in_one: 'Загружать вложения одним архивом'
+  setting_label_usability_use_copy_from_clipboard: 'Разрешить прикрепление изображений из буфера обмена'
+  setting_info_usability_use_copy_from_clipboard: 'Разрешает вставлять изображения из буфера обмена в wiki, задачах, форумах и новостях, а так же в заявках при наличии нашего плагина Service Desk. Работает в браузерах на основе WebKit, в остальных браузерах позволяет вставлять скопированные изображения с HTML страниц.'
+
+  warning_error_occured: "Redmine. Ошибка %{status}"
+  label_create_request: "Создать заявку"
+  label_go_back: "Назад"
+  label_error_log: "Лог ошибки"
+
+  label_iform_admin: "Пожалуйста, сообщите об ошибке администратору"
+  label_usability_settings_user_custom_details: "Настройки своей странички о пользователе"
+  label_usability_settings_default_page: "Настройки страницы по умолчанию"
+  label_usability_settings_select_ajax_preloader: "Выбор прелоадера для AJAX-запросов"
+  label_usability_settings_common: "Общие настройки"
+
+  label_usability_settings_easy_perplex: 'Настройки упрощенного механизма создания задания подчиненному'
+
+  label_usability_easy_perplex_menu: 'Озадачить'
+  label_usability_easy_perplex_modal_header: 'Озадачить своего непосредственного подчиненного'
+  label_usability_easy_perplex_modal_cancel: 'Отмена'
+  label_usability_easy_perplex_select_subordinate: 'Выберите подчиненного'
+  label_usability_easy_perplex_subordinate: 'Кого вы хотите озадачить?'
+  label_usability_easy_perplex_subordinate_description: 'Начните набирать фамилию и выберите подчиненного из списка'
+  label_usability_easy_perplex_issues_header: 'Создать задание'
+  label_usability_easy_perplex_issues_description: 'Назначить ограниченное во времени (с конкретными сроками) на выбранного исполнителя (%{user}) задание.'
+  label_usability_easy_perplex_sd_requests_header: 'Создать заявку'
+  label_usability_easy_perplex_sd_requests_description: 'Отправить свою хотелку выбранному сотруднику (%{user}), позволить сотруднику самому запланировать сроки, определить приоритеты и назначить исполнителей.'
+  label_usability_easy_perplex_create_issue: '<strong>%{project}</strong>. Создать задачу.'
+  label_usability_easy_perplex_create_request: '%{department}. Создать заявку'
+  label_usability_easy_perplex_contact_to: 'Обратитесь к'
+
+  text_usability_easy_perplex_no_subordinates: 'К сожалению, в данный момент у вас нет подчиненных!'
+  text_usability_easy_perplex_ldap_was_not_installed: 'Функциональность недоступна, необходимо установить плагин «ldap_users_sync»'
+  text_usability_easy_perplex_wrong_user: 'Сотрудник не найден'
+  text_usability_easy_perplex_does_not_subordinate: 'Сотрудник %{user} не является вашим непосредственным подчиненным.'
+  text_usability_easy_perplex_you_are_not_participant_of_any_project: 'Вы не являетесь участником ни в одном проекте, в котором %{user} может быть исполнителем'
+  text_usability_easy_perplex_subordinate_is_not_participant_of_any_project: 'Вы не можете назначить задачу на сотрудника %{user}, поскольку сотрудник не является исполнителем ни в одном проекте.'
+  text_usability_easy_perplex_subordinate_is_not_participant_of_any_service_desk: 'Сотрудник %{user} не может принимать и обрабатывать заявки. Обратитесь к администратору Redmine для настройки обслуживающего подразделения.'
+
+  label_usability_download_all_in_one:
+    zero: "Скачать %{count} вложений одним архивом"
+    one: "Скачать %{count} вложение одним архивом"
+    few: "Скачать %{count} вложения одним архивом"
+    many: "Скачать %{count} вложений одним архивом"
+    other: "Скачать %{count} вложений одним архивом"
+  label_usability_settings_totals_in_queries: 'Выводить сумму по столбцам в запросах'
+
+  label_rmplus_logo: "Данный плагин разработан командой «RM+». Вы всегда можете найти другие наши плагины на сайте"
+
+  magnificPopup_tPrev: "Назад"
+  magnificPopup_tNext: "Вперед"
+  magnificPopup_tCounter: "<span class=\"mfp-counter\">%curr% из %total%</span>"
+  magnificPopup_tError: "<a href=\"%url%\">Изображение</a> не может быть загружено."
+  magnificPopup_ajax_tError: "Ошибка <a href=\"%url%\">запроса</a> к серверу."
+  magnificPopup_tClose: "Закрыть (Esc)"
+  magnificPopup_tLoading: "Загрузка..."
+  us_of_issue: "Задачу"
+  label_dmsf: "Документы"
+  usability_pb_std: "Стандартный"
+  usability_pb_tiny: "Маленький"
+  usability_pb_pie: "Сектор"
+  usability_pb_tor: "Бублик"
+
+  label_usability_settings_replace_login_page: "Заменить страницу входа в систему"
+  label_usability_settings_replace_mails_view: 'Заменить внешний вид уведомлений по почте'
+  label_usability_close: 'Закрыть'
+  label_ask_for: "Вы можете обратиться к"
+  info_default_page: "После входа пользователь перенаправляется на страницу по умолчанию. Можно заменить любым ресурсом в Redmine, заданным относительной ссылкой, например: /my/page, /issues и т.п."
+  field_email: "e-mail"
+
+  label_usability_settings_enable_full_activities_for_issues: 'Выводить все действия пользователя по задачам в списке действий'
+  label_usability_settings_group_autosave: 'Автосохранение полей'
+  label_usability_settings_use_autosave_fields: 'Включить автосохранение полей'
+  label_usability_settings_autosave_fields: 'Селектор полей для автосохранения'
+  label_usability_settings_autosave_fields_limitation: 'Ограничение количества сохраненных значений на поле'
+
+  label_usability_was_autosaved: 'Сохранено в черновик'
+
+  label_cm_menu_top_menu_easy_perplex: 'Озадачить'
+  label_cm_menu_custom_menu_us_preferences: 'Внешний вид и удобство использования'
+
+  label_news_uncommentable: 'Отключить комментарии'
+  message_news_uncommentable: 'Комментарии отключены'
+ 
+  label_usability_settings_hide_toolbar_for_wiki_textareas: 'Показывать панель для форматирования текста когда поле получает фокус'
+  
+  label_us_login_hello_zone: 'Добро пожаловать в проект'
+  label_us_login_hello_zone_register: 'Зарегистрироваться в проекте'
+  label_us_login_footer_remember_me: 'Запомнить меня'
+  label_us_login_footer_restore_password: 'Забыли свой пароль?'
+  label_us_login_footer_text: '«<a href="http://rmplus.pro/">RM+</a>» — сделана с умом, заботой о людях и любовью к профессии'
+  label_us_login_input_username: 'Ваш логин'
+  label_us_login_input_password: 'Пароль'
+  label_us_login_submit: 'Войти в систему'
+  label_usability_settings_join_attachments_to_group: 'Объединять загрузки во вкладки в задачах'
+  label_us_no_changes: 'Нет изменений'
+  label_usability_settings_use_custom_project_members_form: 'Использовать упрощеный вид добавления участников в проект'
+  label_usability_settings_use_static_date_in_history: 'Отображать абсолютную дату на странице задачи'
+  info_usability_settings_use_static_date_in_history: 'Отображает абсолютную дату (15.02.2016 12:30) вместо относительной (около 4 часов назад) на странице задачи'
+  label_usability_created_time_by: "Добавил(а) %{author} %{age}"
+  label_usability_updated_time_by: "Обновлено %{author} %{age}"
+  label_usability_updated_time: "Обновлено %{value}"
+  label_usability_settings_collapse_changes_for_history: 'Сворачивать изменения полей в истории'
+  info_usability_settings_collapse_changes_for_history: 'Позволяет сворачивать изменения полей в истории задачи, оставляя видимым только комментарии'
+  label_usability_collapse_history: 'Свернуть изменения'
+  label_usability_expand_history: 'Показать изменения'
+  field_us_store_for_new: 'Запоминать выбор пользователя для новой задачи'
+  label_usability_replace_link_textilizable: 'Автоматически заменять ссылки на задачи и заявки более короткими аналогами.'
+  label_usability_fast_link_top_page: 'Быстрая ссылка вверху страницы'
+  label_usability_fast_link_url: 'URL ссылки'
+  label_usability_fast_link_text: 'Текст ссылки'
+  label_usability_fast_link_color: 'Цвет ссылки'
+  label_us_settings_hide_next_prev_issues: 'Скрыть ссылки следующая\предыдущая на форме задачи'
+  info_us_settings_hide_next_prev_issues: 'Настройка ускоряет открытие страницы задачи'

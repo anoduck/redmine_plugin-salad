@@ -1,0 +1,8 @@
+<tr>
+  <td><label for="cm_item_caption"><%= l(:field_cm_item_caption) %></label><span class="required"> *</span></td>
+  <td><%= text_field_tag 'cm_item[caption]', '', size: 30, required: true %></td>
+</tr>
+<tr>
+  <td><label for="cm_item_query_id"><%= l(:label_cm_issue_query) %></label><span class="required"> *</span></td>
+  <td><%= select_tag 'cm_item[query_id]', options_for_cm_item_query_id, size: 30, required: true %></td>
+</tr>

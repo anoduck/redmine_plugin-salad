@@ -1,0 +1,9 @@
+<% rmp_mailer_header(l(:mail_body_reminder, count: @issues.size, days: @days)) %>
+
+<div style="padding: 0 20px 20px 20px; color: #000; font-size: 14px;">
+  <% @issues.each do |issue| %>
+    <div><%= link_to_issue(issue, :project => true, :only_path => false) %></div>
+  <% end %>
+
+  <p><%= link_to l(:label_issue_view_all), @issues_url, style: 'color:#0298CD' %></p>
+</div>

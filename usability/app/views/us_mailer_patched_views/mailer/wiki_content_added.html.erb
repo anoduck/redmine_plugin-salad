@@ -1,0 +1,5 @@
+<% rmp_mailer_header(l(:mail_body_wiki_content_added, id: link_to(@wiki_content.page.pretty_title, @wiki_content_url, style: 'color:#0298CD'), author: h(@wiki_content.author))) %>
+
+<div style="padding: 0 20px 20px 20px; color: #000; font-size: 14px;">
+  <%= @wiki_content.comments %>
+</div>

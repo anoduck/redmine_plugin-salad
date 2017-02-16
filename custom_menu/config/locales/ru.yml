@@ -1,0 +1,73 @@
+# English strings go here for Rails i18n
+ru:
+  custom_menu: 'Настраиваемое меню'
+  cm_create_redmine_objects: 'Создать'
+  cm_approve_redmine_objects: 'Согласовать'
+  cm_activity_jobs: 'Выполнить'
+  cm_control_and_planning_redmine_objects: 'Контроль и планирование'
+  cm_profile_settings: 'Настройки'
+  cm_all_projects: "Все проекты"
+  label_custom_menu_settings: "Настройки меню"
+  settings_use_custom_menu: "Использовать настраиваемое верхнее меню"
+  label_rmplus_logo: "Данный плагин разработан командой «RM+». Вы всегда можете найти другие наши плагины на сайте"
+  cm_adminitistration_of_system: "Системы"
+  cm_administartion: "Администрирование"
+  cm_responsibility: "Ознакомиться"
+  cm_go_to_project_issues: "Перейти к заданиям проекта"
+  label_cm_more: "Другое"
+  label_add_indicator: "Добавить показатель"
+  label_add_pattern: "Добавить шаблон"
+  label_add_period: "Добавить расчетный период"
+  label_date_links: "Выбор месяца"
+  label_common_plan: "Общий план"
+  label_show_stats: "Статистика"
+  label_send_to_approve: "Отправить на согласование"
+  label_show_by_ver: "По версиям"
+  label_show_by_user: "По пользователям"
+  label_export_to_format: "Экспортировать в:"
+  settings_cm_dropdown_menu_links: 'Показывать основные ссылки, содержащие класс "move-to-dropdown" в выпадающем меню для задач/заявок/планов...'
+  settings_cm_hide_bottom_issue_links: 'Скрывать нижние дублирующие ссылки редактирования задачи'
+  settings_items_move_to_dropdown: 'Дополнительно переносить в выпадающее меню следующие пункты'
+  label_cm_admin_menu_item: 'Меню'
+  label_cm_manage_menu: 'Настройка основного меню'
+  label_cm_not_available: 'недоступно'
+  field_cm_item_code: 'Пункт меню'
+  field_cm_item_caption: 'Название пункта меню'
+  error_cm_cannot_delete_with_childs: 'Необходимо удалить или перенести все дочерние элементы'
+  label_cm_add_new_item: 'Добавить элемент меню'
+  field_cm_item_custom_url: 'Ссылка'
+  label_cm_custom_item_class: 'CSS классы'
+  field_cm_item_parent: 'Родительский элемент'
+  label_cm_save_menu_structure: 'Сохранить структуру меню'
+  text_cm_menu_tree_was_saved: 'Структура меню была успешно сохранена'
+  field_cm_item_menu: 'Тип меню'
+  label_cm_menu_type_top_menu: 'Основное меню'
+  label_cm_menu_type_account_menu: 'Меню профиля пользователя'
+  field_cm_item_logged: 'Только для залогированных пользователей'
+  field_cm_item_admin: 'Только для администраторов'
+  label_cm_menu_available_items: 'Доступные пункты'
+
+  label_cm_menu_top_menu_home: 'Домашняя страница'
+  label_cm_menu_top_menu_my_page: 'Моя страница'
+  label_cm_menu_top_menu_projects: 'Проекты'
+  label_cm_menu_top_menu_administration: 'Администрирование'
+  label_cm_menu_top_menu_help: 'Помощь'
+  label_cm_menu_account_menu_login: 'Войти'
+  label_cm_menu_account_menu_register: 'Регистрация'
+  label_cm_menu_account_menu_my_account: 'Настройки аккаунта'
+  label_cm_menu_account_menu_logout: 'Выйти'
+
+  label_cm_menu_custom_menu_cm_all_projects: 'Все проекты'
+  label_cm_menu_custom_menu_my_name: '- Имя пользователя - (аккаунт)'
+  label_cm_menu_custom_menu_cm_search: 'Поле поиска'
+  label_cm_menu_custom_menu_cm_project_tree: 'Дерево проектов'
+  label_cm_menu_custom_menu_cm_my_activity: 'Действия пользователя'
+  settings_cm_use_cache: 'Кэшировать меню'
+  label_cm_item_visibility: 'Видимость'
+  label_cm_item_visibility_public: 'виден всем'
+  label_cm_item_visibility_role: 'виден ролям'
+  label_cm_item_visibility_admin: 'виден администратору'
+  label_cm_menu_item_type: 'Тип пункта меню'
+  label_cm_any_link: 'Произвольная ссылка'
+  label_cm_any_query: 'Произвольный запрос по задачам'
+  label_cm_issue_query: 'Запрос по задачам'

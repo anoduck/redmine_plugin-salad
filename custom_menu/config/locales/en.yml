@@ -1,0 +1,73 @@
+# English strings go here for Rails i18n
+en:
+  custom_menu: 'Custom menu'
+  cm_create_redmine_objects: 'Create'
+  cm_approve_redmine_objects: 'Approve'
+  cm_activity_jobs: 'Actions'
+  cm_control_and_planning_redmine_objects: 'Mannaging'
+  cm_profile_settings: 'Settings'
+  cm_all_projects: "All projects"
+  label_custom_menu_settings: "Custom menu"
+  settings_use_custom_menu: "Enable custom menu"
+  label_rmplus_logo: "This plugin developed by «RM+» Team. You may allways may to find out more about our pugins at:"
+  cm_adminitistration_of_system: "System"
+  cm_administartion: "Administration"
+  cm_responsibility: "Responsibility"
+  cm_go_to_project_issues: "Go to projects issues"
+  label_cm_more: "More"
+  label_add_indicator: "Add indicator"
+  label_add_pattern: "Add pattern"
+  label_add_period: "Add calc period"
+  label_date_links: "Month selection"
+  label_common_plan: "Common plan"
+  label_show_stats: "Stats"
+  label_send_to_approve: "Send to approve"
+  label_show_by_ver: "By version"
+  label_show_by_user: "By users"
+  label_export_to_format: "Export to:"
+  settings_cm_dropdown_menu_links: 'Enable dropdown menu with basic links for issue/request/plan etc.'
+  settings_cm_hide_bottom_issue_links: 'Hide bottom issue edit links'
+  settings_items_move_to_dropdown: 'Standart links being moved to dropdown'
+  label_cm_admin_menu_item: 'Menu'
+  label_cm_manage_menu: 'Setting up the main menu'
+  label_cm_not_available: 'not available'
+  field_cm_item_code: 'Menu item'
+  field_cm_item_caption: 'Manu item name'
+  error_cm_cannot_delete_with_childs: 'You must remove or move all child elements'
+  label_cm_add_new_item: 'Add a menu item'
+  field_cm_item_custom_url: 'Link'
+  label_cm_custom_item_class: 'CSS classes'
+  field_cm_item_parent: 'Parent item'
+  label_cm_save_menu_structure: 'Save menu structure'
+  text_cm_menu_tree_was_saved: 'The menu structure has been successfully saved'
+  field_cm_item_menu: 'Menu type'
+  label_cm_menu_type_top_menu: 'Main menu'
+  label_cm_menu_type_account_menu: 'User Profile menu'
+  field_cm_item_logged: 'Only for logged users'
+  field_cm_item_admin: 'Only for administrators'
+  label_cm_menu_available_items: 'Available items'
+
+  label_cm_menu_top_menu_home: 'Homepage'
+  label_cm_menu_top_menu_my_page: 'My page'
+  label_cm_menu_top_menu_projects: 'Projects'
+  label_cm_menu_top_menu_administration: 'Administration'
+  label_cm_menu_top_menu_help: 'Help'
+  label_cm_menu_account_menu_login: 'Sign in'
+  label_cm_menu_account_menu_register: 'Sign up'
+  label_cm_menu_account_menu_my_account: 'My account'
+  label_cm_menu_account_menu_logout: 'Sign out'
+
+  label_cm_menu_custom_menu_cm_all_projects: 'All projects'
+  label_cm_menu_custom_menu_my_name: '- User name - (account)'
+  label_cm_menu_custom_menu_cm_search: 'Search field'
+  label_cm_menu_custom_menu_cm_project_tree: 'Projects tree'
+  label_cm_menu_custom_menu_cm_my_activity: 'User actions'
+  settings_cm_use_cache: 'Cache menu'
+  label_cm_item_visibility: 'Visibility'
+  label_cm_item_visibility_public: 'visible to all'
+  label_cm_item_visibility_role: 'visible to roles'
+  label_cm_item_visibility_admin: 'visible to admin'
+  label_cm_menu_item_type: 'Menu item type'
+  label_cm_any_link: 'Arbitrary link'
+  label_cm_any_query: 'Arbitrary issue query'
+  label_cm_issue_query: 'Issue query'

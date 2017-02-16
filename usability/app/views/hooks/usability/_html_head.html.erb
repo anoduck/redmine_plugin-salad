@@ -1,0 +1,146 @@
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<% settings = (Setting.plugin_usability || {}) %>
+<%# Passing plugin settings from server to client %>
+<script type="text/javascript">
+
+  RMPlus.Usability = (function(my){
+    var my = my || {};
+    <% if settings['use_autosave_fields'] %>
+      my.msg_autosaved = '<%= escape_javascript(l(:label_usability_was_autosaved)) %>';
+    <% end %>
+    <% if settings['collapse_changes_for_history'] %>
+      my.collapse_label = '<%= l(:label_usability_collapse_history) %>';
+      my.expand_label = '<%= l(:label_usability_expand_history) %>';
+    <% end %>
+    my.settings = <%= settings.to_json.html_safe %>;
+
+    my.galleryPopupSettings = {
+      type: 'image',
+      gallery: {
+        enabled: true,
+        navigateByImgClick: true,
+
+        midClick: false,
+
+        arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>',
+        tPrev: '<%= l(:magnificPopup_tPrev) %>',
+        tNext: '<%= l(:magnificPopup_tNext) %>',
+        tCounter: '<%= l(:magnificPopup_tCounter).html_safe %>'
+      },
+      image: {
+        tError: '<%= l(:magnificPopup_tError).html_safe %>'
+      },
+      ajax: {
+       tError: '<%= l(:magnificPopup_ajax_tError).html_safe %>'
+      },
+      tClose: '<%= l(:magnificPopup_tClose) %>',
+      tLoading: '<%= l(:magnificPopup_tLoading) %>'
+    };
+
+    return my;
+  })(RMPlus.Usability || {});
+
+  <% if settings['custom_help_url'].to_s != '' %>
+
+    $(document).ready( function () {
+      $("#top-menu a.help:first").attr("href", "<%= settings['custom_help_url'] %>");
+    });
+
+  <% end %>
+
+<% if settings[:hide_toolbar_for_wiki_textareas] %>
+  $(document).ready( function () {
+    $(document.body).on('click', 'textarea.wiki-edit', function(event) {
+        $(event.target).parent().prev('.jstElements').show();
+        });
+    $(document.body).on('blur', 'textarea.wiki-edit', function(event) {
+      setTimeout(function(){
+        if ($(event.target)[0] !== document.activeElement){
+          $(event.target).parent().prev('.jstElements').animate({opacity: 0}, 0, function() {$(this).hide(); $(this).css('opacity', 1)});
+        }
+      }, 200);
+      });
+    });
+<% end %>
+
+<% if Redmine::VERSION.to_s >= '3.0.0' && (Setting.plugin_usability || {})['use_custom_project_members_form'] && controller_name == 'projects' && action_name == 'settings'%>
+  function use_custom_project_members_form(){
+    var tab_content_members =  $('#tab-content-members');
+    if(tab_content_members.find('> p').length > 0){
+      tab_content_members.find('> p')[0].remove();
+    }
+    $('#add_members_to_project').remove();
+    tab_content_members.prepend("<%= j render partial: 'hooks/usability/members_form' %>");
+  }
+  $(document).ready( function () {
+    use_custom_project_members_form();
+  });
+
+  $(document).ajaxStop(function () {
+    use_custom_project_members_form();
+  });
+
+<% end %>
+
+</script>
+
+<%= javascript_include_tag :raphael %>
+<%= javascript_include_tag 'pie-chart', plugin: :usability %>
+<%= javascript_include_tag 'usability.js', plugin: :usability %>
+<%= stylesheet_link_tag 'usability.css', plugin: :usability %>
+<%= javascript_include_tag :usability_clipboard, plugin: :usability if settings[:use_copy_from_clipboard] %>
+
+<% if (!controller.nil? && controller.controller_name == 'settings' && controller.action_name == 'plugin') && params[:id] == 'usability' %>
+  <%= stylesheet_link_tag 'settings', plugin: 'a_common_libs', media: 'screen' %>
+<% end %>
+
+<% if ['issues', 'sd_requests', 'kpi', 'kpi_user_surcharges'].include?(controller.controller_name) %>
+  <%= javascript_include_tag 'jquery.magnific-popup.min.js', plugin: :usability %>
+  <%= stylesheet_link_tag 'magnific-popup.css', plugin: :usability %>
+<% end %>
+
+<% if settings['use_autosave_fields'] %>
+  <%= javascript_include_tag :fields_autosave, plugin: :usability %>
+<% end %>
+
+<% if settings['show_sidebar_close_button'].to_s != '' && settings['usability_sidebar_width'].to_i > 0 %>
+  <style type="text/css">
+    #content {
+      margin-right: <%= settings['usability_sidebar_width'].to_i + settings['usability_sidebar_gap'].to_i %>px;
+      width: auto;
+    }
+    #sidebar {
+      width: <%= settings['usability_sidebar_width'].to_i %>px;
+    }
+  </style>
+<% end %>
+
+<% if settings[:hide_toolbar_for_wiki_textareas] %>
+  <style type="text/css">
+  .jstElements
+    {
+    display: none;
+    }
+  </style>
+<% end %>
+<% if controller_name == 'issues' && @use_static_date_in_history %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.issue .author').html("<%= escape_javascript(authoring(@issue.created_on, @issue.author)) %>. <% if @issue.created_on != @issue.updated_on %><%= escape_javascript(l(:label_usability_updated_time, time_tag([@issue.updated_on, true]))).html_safe %>.<% end %>");
+    });
+  </script>
+<% end %>
+
+<% if User.current.logged? && (settings['fast_link_top_page'] || {})['text'].present? %>
+    <div id="us_fast_link_top_page_block">
+      <%= link_to(('<span>' + (settings['fast_link_top_page'] || {})['text'] + '</span>').html_safe, (settings['fast_link_top_page'] || {})['url'],
+                  class: "#{(settings['fast_link_top_page'] || {})['icon']} #{(settings['fast_link_top_page'] || {})['icon'].start_with?('fa-') ? 'rm-icon' : 'us_icon'}",
+                  style: "color: #{(settings['fast_link_top_page'] || {})['color']}") %>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function () {
+        $('#us_fast_link_top_page_block').css('float', 'right').insertBefore('#header h1');
+        $('#us_fast_link_top_page_block > a > span').css('border-bottom-color', $('#us_fast_link_top_page_block > a').css('color').split(')')[0] + ', 0.40)');
+      });
+    </script>
+<% end %>
